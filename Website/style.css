@@ -1,0 +1,84 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    color:rgb(30, 30, 30);
+}
+body {
+    background-color: #eee;
+}
+header {
+    color: rgb(108, 199, 34);
+    font-size: 20px;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+nav {
+    width: 335px;
+    margin: auto;
+}
+.searchBar {
+    padding: 8px;
+    margin: 10px;
+    border-radius: 3px;
+    border: none;
+    font-size: 16px;
+    background-color: white;
+}
+ul {
+    list-style: none;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+li {
+    margin-right: 30px;
+    display: inline;
+}
+.navButton {
+    font-size: 20px;
+    text-decoration: none;
+    color: #69BE28;
+    padding: 10px;
+    margin-top: 0px;
+    border: 1px solid #69BE28;
+    border-radius: 5px;
+    transition: background-color .2s, color .2s;
+}
+.navButton:hover {
+    color: white;
+    background-color: #69BE28;
+}
+.block {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+h1 {
+    margin-bottom: 10px;
+    color: #69BE28;
+}
+p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+.button {
+    padding: 10px;
+    margin-top: 15px;
+    background-color: white;
+    color:#69BE28;
+    font-size: 16px;
+    border: 1px solid #69BE28;
+    border-radius: 5px;
+    transition: background-color .2s, color .2s;
+}
+.button:hover {
+    background-color: #69BE28;
+    color: white;
+}
