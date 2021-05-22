@@ -1,7 +1,8 @@
 const express = require("express");
 const cheerio = require("cheerio");
-const app = express();
 const scraper = require('./wikipediaScraper');
+const app = express();
+PORT = 17832;
 
 console.log(scraper)
 
@@ -33,6 +34,6 @@ app.get("*", function (req, res) {
     res.send("404 CANT FIND ROUTE");
 });
 
-app.listen(3000, function () {
-    console.log("Server is running on localhost:3000");
+app.listen(PORT, function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+    console.log('Express started on http://localhost:' + PORT)
 });
