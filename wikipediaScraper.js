@@ -1,26 +1,71 @@
 const cheerio = require('cheerio');
-const request = require('request');
-//Placeholder for user's search. In the final version their search will be spliced by spaces, replacing them with underscores to match wikipedia's url standard.
-const name = "George_Washington";
+const axios = require('axios');
 
-//Building the URL and retrieving the wikipedia page HTML
-request('https://en.wikipedia.org/wiki/' + name, function(err, res, html) {
-    if (!err && res.statusCode == 200) {
-        var $ = cheerio.load(html);
-        //Checking each th element, which makeup the personal details sidebar of an individual's wikipedia page
+async function getPerson(name) {
+    const url = 'https://en.wikipedia.org/wiki/' + name;
+    console.log(url);
+    const res = await axios.get(url);
+    try {
+        const $ = cheerio.load(res.data);
+
+        let dobs = [];
+
+        //Check each 'th' element, which are typically the sidebar elements with details about the entity.
         $('th').each(function(i, item) {
             var label = $(this).text();
             if (label == 'Born') {
-                var dob = $(this).next().text();
-                console.log('Born: ' + dob);
+                let dobRaw = $(this).next().text();
+                let dob = dobRaw.split(/\(|\)/);
+                console.log(dob);
+                dobs.push(name);  // Temporary saving of name. Should use wikipedia article instead long term.
+                dobs.push(dob[1]);  // Saving birthdate
             }
             if (label == 'Died') {
-                var dod = $(this).next().text();
-                console.log('Died: ' + dod);
+                let dodRaw = $(this).next().text();
+                let dod = dodRaw.split(/\(|\)/);
+                dobs.push(dod[1]);  // Saving death
             }
-        });
+        })
+        
+        console.log(dobs);
+        return dobs;
+    } catch (error) {
+        console.error(error);
     }
-    else {
-        console.log("Couldn't find the wikipedia page searched for.");
+}
+
+async function getEvent(name) {
+    const url = 'https://en.wikipedia.org/wiki/' + name;
+    console.log(url);
+    const res = await axios.get(url);
+    try {
+        const $ = cheerio.load(res.data);
+
+        let info = [];
+
+        //Check each 'th' element, which are typically the sidebar elements with details about the entity.
+        $('th').each(function(i, item) {
+            var label = $(this).text();
+            if (label == 'Date') {
+                let dateRaw = $(this).next().text();
+                let date = dateRaw.split('– ');
+                console.log(date);
+                info.push(name);  // Temporary saving of name. Should use wikipedia article instead long term.
+                info.push(date[0]);  // Saving start date
+                info.push(date[1]);  // Saving start date
+            }
+        })
+        
+        console.log(info);
+        return info;
+    } catch (error) {
+        console.error(error);
     }
-})
+}
+
+module.exports = {getPerson: getPerson, getEvent: getEvent};
+
+//Building the URL and retrieving the wikipedia page HTML
+
+
+// module.exports = {request};
