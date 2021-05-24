@@ -22,7 +22,7 @@ nav {
 }
 .searchBar {
     padding: 8px;
-    margin: 10px;
+    margin-top: 10px;
     border-radius: 3px;
     border: none;
     font-size: 16px;
@@ -38,27 +38,11 @@ li {
     margin-right: 30px;
     display: inline;
 }
-.navButton {
-    font-size: 20px;
-    text-decoration: none;
-    color: #69BE28;
-    padding: 10px;
-    margin-top: 0px;
-    border: 1px solid #69BE28;
-    border-radius: 5px;
-    transition: background-color .2s, color .2s;
-}
-.navButton:hover {
-    color: white;
-    background-color: #69BE28;
-}
 .block {
     max-width: 1200px;
     margin: auto;
-    margin-top: 30px;
-    padding: 40px;
+    padding: 10px;
     border-radius: 10px;
-    background-color: white;
 }
 h1 {
     margin-bottom: 10px;
@@ -68,17 +52,29 @@ p {
     font-size: 18px;
     margin-top: 5px;
 }
-.button {
-    padding: 10px;
-    margin-top: 15px;
+.dataTable {
+    width: 70%;
     background-color: white;
-    color:#69BE28;
-    font-size: 16px;
-    border: 1px solid #69BE28;
     border-radius: 5px;
-    transition: background-color .2s, color .2s;
+    border-color: black;
+    margin: auto;
+    padding: 0px;
 }
-.button:hover {
-    background-color: #69BE28;
-    color: white;
+th {
+    color: #69BE28;
+    font-size: 22px;
+    text-align: left;
+    padding: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin: 0px;
+}
+td {
+    padding: 15px;
+    margin: 0px;
+    border-width: 5px;
+    border-color: black;
+}
+.shadedRow {
+    background-color: rgb(245, 245, 245);
 }
