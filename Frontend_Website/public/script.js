@@ -48,7 +48,7 @@ function reqListener () {
 // 1. Request Setup and Call
 var xmlReq = new XMLHttpRequest();
 xmlReq.addEventListener("load", reqListener);
-xmlReq.open("GET", "http://flip3.engr.oregonstate.edu:17832/Person?name=George_Washington");
+xmlReq.open("GET", 'http://localhost:26678/scores');    //  "http://flip3.engr.oregonstate.edu:17832/Person?name=George_Washington");
 xmlReq.send();
 
 let table = document.querySelector("table");

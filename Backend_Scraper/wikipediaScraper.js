@@ -1,10 +1,8 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-async function getPerson(name) {
-    const url = 'https://en.wikipedia.org/wiki/' + name;
-    console.log(url);
-    const res = await axios.get(url);
+function parsePerson(res, name) {
+    console.log('in extract')
     try {
         const $ = cheerio.load(res.data);
 
@@ -34,16 +32,13 @@ async function getPerson(name) {
     }
 }
 
-async function getEvent(name) {
-    const url = 'https://en.wikipedia.org/wiki/' + name;
-    console.log(url);
-    const res = await axios.get(url);
+function parseEvent(res, name) {
     try {
         const $ = cheerio.load(res.data);
 
         let info = [];
 
-        //Check each 'th' element, which are typically the sidebar elements with details about the entity.
+        // Check each 'th' element (sidebar elements with entity details)
         $('th').each(function(i, item) {
             var label = $(this).text();
             if (label == 'Date') {
@@ -52,7 +47,7 @@ async function getEvent(name) {
                 console.log(date);
                 info.push(name);  // Temporary saving of name. Should use wikipedia article instead long term.
                 info.push(date[0]);  // Saving start date
-                info.push(date[1]);  // Saving start date
+                info.push(date[1]);  // End date
             }
         })
         
@@ -63,9 +58,16 @@ async function getEvent(name) {
     }
 }
 
-module.exports = {getPerson: getPerson, getEvent: getEvent};
+async function getEntity(name, extractFunc) {
+    const url = 'https://en.wikipedia.org/wiki/' + name;
+    console.log('url', url);
+    const res = await axios.get(url);
+
+    return extractFunc(res, name);
+}
+
+module.exports = {getEntity: getEntity, 
+                parsePerson: parsePerson, 
+                parseEvent: parseEvent};
 
 //Building the URL and retrieving the wikipedia page HTML
-
-
-// module.exports = {request};
