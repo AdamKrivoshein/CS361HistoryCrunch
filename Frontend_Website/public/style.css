@@ -3,6 +3,8 @@
     margin: 0px;
     font-family: 'Ubuntu', sans-serif;
     color:rgb(30, 30, 30);
+    --primary-color: #69BE28;
+    --secondary-color: #be2d28;
 }
 body {
     background-color: #eee;
@@ -46,47 +48,62 @@ li {
 }
 h1 {
     margin-bottom: 10px;
-    color: #69BE28;
+    color: var(--primary-color);
+}
+h2 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
 }
 p {
     font-size: 18px;
     margin-top: 5px;
+    text-indent: 25px;
+}
+#sidebar {
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px;
+    padding-left: 30px;
+    width: 350px;
+    line-height: 1.6;
+    position: fixed;
+    top: 204px;
+    left: -5px;
 }
 .dataTable {
-    width: 400px;
     background-color: white;
     border-radius: 5px;
     border-color: black;
     margin: auto;
-    padding: 15px;
-}
-th {
-    color: #69BE28;
-    font-size: 22px;
-    text-align: left;
-    padding: 15px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin: 0px;
 }
 td {
-    padding: 5px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin: 0px;
     border-width: 5px;
     border-color: black;
 }
+.tableTitle {
+    font-style: bold;
+    font-size: 20px;
+    padding: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: var(--primary-color);
+}
 .deleteButton {
     background-color: white;
     border-radius: 20px;
-    border: #69BE28 2px solid;
+    border: var(--secondary-color) 2px solid;
     padding: 10px;
     margin-right: -40px;
     width: 70px;
-    color: #69BE28;
+    color: var(--secondary-color);
     transition: background-color .2s, color .2s;
 }
 .deleteButton:hover {
-    background-color: #69BE28;
+    background-color: var(--secondary-color);
     color: white;
 }
 .shadedRow {
