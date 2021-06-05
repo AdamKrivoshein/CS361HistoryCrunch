@@ -9,8 +9,8 @@ var pool = mysql.createPool({
     database        : 'HighScores'
 });
 
-// Makes query return a promise so async and await can be used for multi query operations.
-const query = util.promisify(pool.query).bind(pool);    // TODO: Redundant already promise
+// Makes query return a promise so async/await can be used for multiple queries.
+const query = util.promisify(pool.query).bind(pool);
 
 module.exports.query = query;
 module.exports.pool = pool;

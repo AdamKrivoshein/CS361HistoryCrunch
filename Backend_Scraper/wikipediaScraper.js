@@ -15,7 +15,7 @@ function parsePerson(res, name) {
                 let dobRaw = $(this).next().text();
                 let dob = dobRaw.split(/\(|\)/);
                 console.log(dob);
-                dobs.push(name);  // Temporary saving of name. Should use wikipedia article instead long term.
+                dobs.push(name);
                 dobs.push(dob[1]);  // Saving birthdate
             }
             if (label == 'Died') {
@@ -45,7 +45,7 @@ function parseEvent(res, name) {
                 let dateRaw = $(this).next().text();
                 let date = dateRaw.split('– ');
                 console.log(date);
-                info.push(name);  // Temporary saving of name. Should use wikipedia article instead long term.
+                info.push(name);
                 info.push(date[0]);  // Saving start date
                 info.push(date[1]);  // End date
             }
@@ -69,5 +69,3 @@ async function getEntity(name, extractFunc) {
 module.exports = {getEntity: getEntity, 
                 parsePerson: parsePerson, 
                 parseEvent: parseEvent};
-
-//Building the URL and retrieving the wikipedia page HTML
